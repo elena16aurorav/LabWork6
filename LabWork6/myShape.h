@@ -10,9 +10,10 @@ class Shape {
 		Shape();
 		Shape(COLOR color1);
 		Shape(const Shape& other);
+		Shape(Shape&& tmp);
 		virtual ~Shape();
 
-		virtual void WhereAmI() const;
-		virtual void Inflate(int a){};// = 0;
-		virtual void calculateSquare(){};//=0;
+		virtual void WhereAmI() const=0;
+		virtual void Inflate(int a)= 0;
+		virtual void calculateSquare()=0;
 };

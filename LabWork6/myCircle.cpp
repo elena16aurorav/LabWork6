@@ -8,34 +8,26 @@ Circle::Circle() {
 	this->m_centerY = 0;
 	this->m_radius = 0;
 };
-Circle::Circle(int centerX, int centerY, double radius, COLOR color1):Shape(color1){
-	this->m_centerX = centerX;
-	this->m_centerY = centerY;
-	this->m_radius = radius;
+Circle::Circle(int centerX, int centerY, double radius, COLOR color1):Shape(color1),
+m_centerX(centerX), m_centerY(centerY), m_radius(radius){
+	this->calculateSquare();
 };
 
-Circle::Circle(const Rect& other):Shape(other) {
-	int left=other.getLeft(), 
-		right=other.getRight(), 
-		top=other.getTop(), 
-		bottom=other.getBottom();
-	
-	this->m_centerX = left+(right-left)/2;
-	this->m_centerY = top+(bottom-top)/2;
-	if ((right - left) > (bottom - top)){
-		this->m_radius = (bottom - top) / 2;
-	}
-	else{
-		this->m_radius = (right - left) / 2;
-	}
+Circle::Circle(const Circle& other): Shape(other.m_color),
+m_centerX(other.m_centerX), m_centerY(other.m_centerY), m_radius(other.m_radius) {
+	this->calculateSquare();
 };
 
-void Circle::WhereAmI() const{
-	cout << "Now I am in class Circle" << endl;
+Circle::Circle(Circle&& tmp) {
+
 };
 
 Circle::~Circle() {
 	cout << "Now I am in Circle's destructor!" << endl;
+};
+
+void Circle::WhereAmI() const{
+	cout << "Now I am in class Circle" << endl;
 };
 
 void Circle::Inflate(int a){

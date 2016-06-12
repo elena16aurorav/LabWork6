@@ -18,20 +18,21 @@ Rect::Rect(int left, int right, int top, int bottom){
 	normalize();
 };
 
-Rect::Rect(const Rect& other):Shape(other){
-	this->m_left = other.m_left;
-	this->m_right = other.m_right;
-	this->m_top = other.m_top;
-	this->m_bottom = other.m_bottom;
-}
+Rect::Rect(const Rect& other):Shape(other.m_color), 
+m_left(other.m_left), m_right(other.m_right),
+m_top(other.m_top), m_bottom(other.m_bottom){
+	//normalize();
+	this->calculateSquare();
+};
 
-Rect::Rect(int left, int right, int top, int bottom, COLOR color):Shape(color) {
-	//Rect(left, right, top, bottom);
-	this->m_left = left;
-	this->m_right = right;
-	this->m_top = top;
-	this->m_bottom = bottom;
+Rect::Rect(Rect&& tmp) {
+	
+};
+
+Rect::Rect(int left, int right, int top, int bottom, COLOR color):Shape(color),
+m_left(left), m_right(right), m_top(top), m_bottom(bottom){
 	normalize();
+	this->calculateSquare();
 };
 
 Rect::~Rect(){
@@ -88,19 +89,6 @@ void Rect::Inflate(int a) {
 	this->m_right += a;
 	this->m_top -= a;
 	this->m_bottom += a;
-};
-
-int Rect::getLeft() const{
-	return this->m_left;
-};
-int Rect::getRight() const{
-	return this->m_right;
-};
-int Rect::getTop() const{
-	return this->m_top;
-};
-int Rect::getBottom() const{
-	return this->m_bottom;
 };
 
 void Rect::calculateSquare(){

@@ -1,6 +1,7 @@
 #pragma once
 #include "myShape.h"
 #include "myRect.h"
+#include "myCircle.h"
 
 class Circle: public Shape {
 	public:
@@ -10,7 +11,8 @@ class Circle: public Shape {
 
 		Circle();
 		Circle(int centerX, int centerY, double radius, COLOR color1);
-		Circle(const Rect& other);
+		Circle(const Circle& other);
+		Circle(Circle&& tmp);
 
 		~Circle();
 

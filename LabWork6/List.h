@@ -5,6 +5,7 @@
 
 
 class List{
+/*
 	Node Head;// фиктивный элемент, который является признаком начала списка
 	Node Tail;// фиктивный элемент, который является признаком конца списка
 	unsigned int m_size;//количество элементов списка
@@ -37,4 +38,5 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, const List& ls);
 	friend std::ofstream& operator<<(std::ofstream& ofs, const List& ls);
 	friend std::ifstream& operator>> (std::ifstream& ifs, List& ls);
+	*/
 };

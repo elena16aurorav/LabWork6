@@ -8,6 +8,7 @@ public:
 	Rect();
 	Rect(int left, int right, int top, int bottom);
 	Rect(const Rect& other);
+	Rect(Rect&& tmp);
 	Rect(int left, int right, int top, int bottom, COLOR color1);
 
 	~Rect();
@@ -25,10 +26,5 @@ public:
 	virtual void WhereAmI() const;
 	virtual void Inflate(int a);
 	virtual void calculateSquare();
-
-	int getLeft() const;
-	int getRight() const;
-	int getTop() const;
-	int getBottom() const;
 };
 

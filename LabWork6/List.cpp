@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-
+/*
 List::List(){//используем для создания пустого списка
 	this->Head.pNext = &Tail;
 	this->Tail.pPrev = &Head;
@@ -251,4 +251,4 @@ List & List::operator=(List && other)
 	}
 	return *this;
 }
-
+*/

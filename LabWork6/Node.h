@@ -12,7 +12,7 @@ public:
 	~Node();
 
 	friend class List;
-	//friend std::ostream & operator<<(std::ostream & os, const List & ls);
+	//friend std::ostream & operator<<(std::ostream & os, const List& ls);
 	//friend std::ofstream& operator<<(std::ofstream& ofs, const List& ls);
 
 };
