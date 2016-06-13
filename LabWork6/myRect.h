@@ -28,5 +28,7 @@ public:
 	virtual void calculateSquare();
 	virtual Rect* factoryMethod() const;
 
+	virtual bool operator==(const Shape& other);
+
 };
 

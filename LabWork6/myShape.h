@@ -18,5 +18,7 @@ public:
 		virtual void Inflate(int a)= 0;
 		virtual void calculateSquare() = 0;
 		virtual Shape* factoryMethod() const = 0;
+		virtual bool operator==(const Shape& other) = 0;
 		double getSquare() const;
+
 };

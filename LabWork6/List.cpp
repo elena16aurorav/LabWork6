@@ -78,17 +78,15 @@ void List::AddToTail(const Shape& shape) {//добавляем элемент
 	new Node(Tail.pPrev, shape);
 	this->m_size++;
 };
-/*
+
 bool List::RemoveOne(const Shape& shape){
 	Node* pNode = Head.pNext;
 	while (pNode != &Tail){
-/*		if (pNode->m_data == shape){
+		if (*pNode->m_data == shape){
 			delete pNode;
 			this->m_size--;
 			return true;
 		}
-*/
-/*
 		pNode = pNode->pNext;//переход на следующий элемент в списке
 	}
 	return false;
@@ -100,13 +98,12 @@ int List::Remove(const Shape& shape) {
 	Node* pNodeNext = nullptr;
 	while (pNode != &Tail) {
 		pNodeNext = pNode->pNext;
-/*		if (pNode->m_data == shape) {
+		if (*pNode->m_data == shape) {
 			
 			delete pNode;
 			this->m_size--;
 			n++;
 		}
-*//*
 		pNode = pNodeNext;
 	}
 //	delete pNodeNext;
@@ -121,13 +118,13 @@ void List::Empty() {
 	Tail.pPrev = &Head;
 	this->m_size = 0;
 };
-*/
+
 void List::sort() {//пузырьковая сортировка
-	Node* p = Head.pNext;
+	Node* p = Tail.pPrev;
 	int j = m_size;
-	while (p != &Tail)
+	while (p != &Head)
 	{
-		Node* np = p;
+		Node* np = Head.pNext;//p;
 		for (int i = 0; i <j - 1; i++)
 		{
 			if (np->m_data->getSquare() > np->pNext->m_data->getSquare())
@@ -145,25 +142,10 @@ void List::sort() {//пузырьковая сортировка
 				p1->pPrev = p2;
 
 				np = p2;
-				//p = np;
-				
-/*				Node* p1 = np->pNext;
-				Node* p2 = np->pPrev;
-				
-				p2->pNext = p1;
-				np->pNext->pNext->pPrev = np->pNext;
-				
-				np->pNext = np->pNext->pNext;
-				
-				p1->pPrev = p2;
-				p1->pNext = np;
-				
-				np->pPrev = p1;
-*/					
 			}
 			np = np->pNext;
 		}
-		p = p->pNext;
+		p = p->pPrev;
 		j--;
 	}
 

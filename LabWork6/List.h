@@ -22,9 +22,7 @@ public:
 */
 	int size();
 	void AddToHead(const Shape& shape);
-
 	void AddToTail(const Shape& shape);
-/*
 	//удаление из списка первого элемента, 
 	//данное которого совпадает со значением 
 	//параметра. ≈сли элемент найден и удален, 
@@ -36,7 +34,7 @@ public:
 	//ћетод возвращает количество удаленных элементов.
 	int Remove(const Shape& shape);//
 	void Empty();
-*/
+
 	void sort();//пузырькова€ сортировка
 /*
 	friend std::ostream& operator<<(std::ostream& os, const List& ls);

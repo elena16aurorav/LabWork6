@@ -31,7 +31,7 @@ Rect::Rect(Rect&& tmp) {
 
 Rect::Rect(int left, int right, int top, int bottom, COLOR color):Shape(color),
 m_left(left), m_right(right), m_top(top), m_bottom(bottom){
-	normalize();
+//	normalize();
 	this->calculateSquare();
 };
 
@@ -99,4 +99,15 @@ void Rect::calculateSquare(){
 
 Rect* Rect::factoryMethod() const{
 	return new Rect(*this);
+};
+
+bool Rect::operator==(const Shape& other)
+{
+	if (const Rect* rec = dynamic_cast<const Rect*>(&other))
+	{
+		if (m_bottom == rec->m_bottom && m_left == rec->m_left && 
+			m_right == rec->m_right && m_top == rec->m_top && m_color == rec->m_color)
+			return true;
+	}
+	return false;
 };

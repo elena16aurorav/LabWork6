@@ -20,4 +20,6 @@ class Circle: public Shape {
 		virtual void Inflate(int a);
 		virtual void calculateSquare();
 		virtual Circle* factoryMethod() const;
+
+		virtual bool operator==(const Shape& other);
 };

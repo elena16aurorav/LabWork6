@@ -41,3 +41,14 @@ void Circle::calculateSquare(){
 Circle* Circle::factoryMethod() const{
 	return new Circle(*this);
 };
+
+bool Circle::operator==(const Shape & other)
+{
+	if (const Circle* cir = dynamic_cast<const Circle*>(&other))
+	{
+		if (m_centerX == cir->m_centerX && m_centerY == cir->m_centerY && 
+			m_radius == cir->m_radius && Shape::operator==(other))
+			return true;
+	}
+	return false;
+};
