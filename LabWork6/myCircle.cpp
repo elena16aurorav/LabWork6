@@ -80,13 +80,15 @@ Circle * Circle::operator=(Shape && other)
 std::ostream & operator<<(std::ostream & os, const Circle & string)
 {
 	//os << "Cicle: " <<"Center-" << string.m_x << " " << string.m_y << " Diametr-" << string.m_diametr <<std::endl;
-	os << "" << string.m_centerX << " " << string.m_centerY << " " << string.m_radius << std::endl;
+	os << "" << string.m_centerX << " " << string.m_centerY << " " << string.m_radius <<
+		" " << string.m_color << std::endl;
 	return os;
 };
 
 
 std::ofstream& operator<<(std::ofstream& ofs, const Circle& cir)
 {
-	ofs << "" << 2 << std::endl << cir.m_centerX << " " << cir.m_centerY << " " << cir.m_radius << std::endl;
+	ofs << "" << cir.m_color << std::endl 
+		<< cir.m_centerX << " " << cir.m_centerY << " " << cir.m_radius << std::endl;
 	return ofs;
 };

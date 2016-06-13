@@ -144,13 +144,15 @@ Rect* Rect::operator=(Shape&& other)
 std::ostream& operator<<(std::ostream& os, const Rect& string)
 {
 	//os << "Rectangle: " <<"Bottom-" << string.m_bottom << " Top-" << string.m_top << " Left-" << string.m_left << " Right-" << string.m_right << std::endl;
-	os << string.m_bottom << " " << string.m_top << " " << string.m_left << " " << string.m_right << std::endl;
+	os << string.m_bottom << " " << string.m_top << " " << string.m_left << " " << string.m_right <<
+		" " << string.m_color << std::endl;
 	return os;
 };
 
 std::ofstream & operator<<(std::ofstream & ofs, const Rect& rec)
 {
-	ofs << "" << 1 << std::endl << rec.m_bottom << " " << rec.m_top << " " << rec.m_left << " " << rec.m_right << std::endl;
+	ofs << "" << rec.m_color << std::endl 
+		<< rec.m_bottom << " " << rec.m_top << " " << rec.m_left << " " << rec.m_right << std::endl;
 	return ofs;
 };
 
