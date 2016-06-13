@@ -21,5 +21,10 @@ class Circle: public Shape {
 		virtual void calculateSquare();
 		virtual Circle* factoryMethod() const;
 
-		virtual bool operator==(const Shape& other);
+		virtual bool operator==(const Shape& other) override;
+		virtual Circle* operator = (const Shape& other) override;
+		virtual Circle* operator = (Shape&& other) override;
+
+		friend std::ostream & operator<<(std::ostream & os, const Circle & string);
+		friend std::ofstream& operator<<(std::ofstream& ofs, const Circle& cir);
 };

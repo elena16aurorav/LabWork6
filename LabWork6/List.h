@@ -36,9 +36,12 @@ public:
 	void Empty();
 
 	void sort();//пузырьковая сортировка
-/*
+
 	friend std::ostream& operator<<(std::ostream& os, const List& ls);
 	friend std::ofstream& operator<<(std::ofstream& ofs, const List& ls);
 	friend std::ifstream& operator>> (std::ifstream& ifs, List& ls);
-	*/
 };
+
+std::ostream & operator<<(std::ostream& os, const List & string);
+std::ifstream& operator>> (std::ifstream& ifs, List& l);
+std::ofstream& operator<<(std::ofstream& ofs, const List& list);

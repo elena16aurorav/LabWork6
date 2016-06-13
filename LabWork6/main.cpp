@@ -2,6 +2,7 @@
 #include "List.h"
 #include "myCircle.h"
 #include <fstream>
+#include <iostream>
 
 int main()
 {
@@ -59,7 +60,8 @@ int main()
 	list.AddToHead(c3);
 	list.AddToHead(c4);
 	list.AddToHead(c5);
-	
+*/
+
 	//запись содержимого списка в файл
 	std::ofstream file("List.txt");
 	file << list << std::endl;
@@ -71,8 +73,7 @@ int main()
 	fcin.open("List.txt");
 	fcin >> list;
 	fcin.close();
-	std::cout << list;
-	*/
-
+	std::cout << list << std::endl;
+	
 	return 0;
 }

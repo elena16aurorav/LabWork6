@@ -1,6 +1,8 @@
 #include "myCircle.h"
 #include "myShape.h"
 #include <iostream>
+#include <fstream>
+
 using namespace std;
 
 Circle::Circle() {
@@ -42,13 +44,49 @@ Circle* Circle::factoryMethod() const{
 	return new Circle(*this);
 };
 
-bool Circle::operator==(const Shape & other)
+bool Circle::operator==(const Shape& other)
 {
 	if (const Circle* cir = dynamic_cast<const Circle*>(&other))
 	{
 		if (m_centerX == cir->m_centerX && m_centerY == cir->m_centerY && 
-			m_radius == cir->m_radius && Shape::operator==(other))
+			m_radius == cir->m_radius && m_color == other.getColor())
 			return true;
 	}
 	return false;
+};
+
+Circle * Circle::operator=(const Shape & other)
+{
+	if (const Circle* cir = dynamic_cast<const Circle*>(&other))
+	{
+		m_radius = cir->m_radius;
+		m_color = cir->getColor();
+	}
+	else
+		throw "Error";
+	return this;
+};
+
+Circle * Circle::operator=(Shape && other)
+{
+	if (const Circle* cir = dynamic_cast<const Circle*>(&other))
+	{
+		m_radius = cir->m_radius;
+		m_color = cir->getColor();
+	}
+	return this;
+};
+
+std::ostream & operator<<(std::ostream & os, const Circle & string)
+{
+	//os << "Cicle: " <<"Center-" << string.m_x << " " << string.m_y << " Diametr-" << string.m_diametr <<std::endl;
+	os << "" << string.m_centerX << " " << string.m_centerY << " " << string.m_radius << std::endl;
+	return os;
+};
+
+
+std::ofstream& operator<<(std::ofstream& ofs, const Circle& cir)
+{
+	ofs << "" << 2 << std::endl << cir.m_centerX << " " << cir.m_centerY << " " << cir.m_radius << std::endl;
+	return ofs;
 };

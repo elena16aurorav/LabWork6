@@ -1,4 +1,6 @@
 #pragma once
+#include <ostream>
+#include <fstream>
 
 enum COLOR { RED, GREEN, BLUE, WHITE };
 
@@ -19,6 +21,11 @@ public:
 		virtual void calculateSquare() = 0;
 		virtual Shape* factoryMethod() const = 0;
 		virtual bool operator==(const Shape& other) = 0;
+		virtual Shape* operator= (const Shape& other) = 0;
+		virtual Shape* operator= (Shape&& other) = 0;
 		double getSquare() const;
+		COLOR getColor() const;
 
+		friend std::ostream& operator<<(std::ostream& os, const Shape& string);
+		friend std::ofstream& operator<<(std::ofstream& ofs, const Shape& cir);
 };

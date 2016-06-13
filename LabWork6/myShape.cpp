@@ -1,5 +1,7 @@
 #include "myShape.h"
 #include <iostream>
+#include <fstream>
+
 using namespace std;
 
 Shape::Shape() {
@@ -25,4 +27,34 @@ Shape::~Shape() {
 
 double Shape::getSquare() const {
 	return this->m_square;
+};
+
+COLOR Shape::getColor() const {
+	return this->m_color;
+};
+
+std::ostream& operator<<(std::ostream& os, const Shape& string)
+{
+	os << string.m_color;
+	return os;
+}
+
+std::ofstream& operator<<(std::ofstream& ofs, const Shape& shape)
+{
+	switch (shape.getColor())
+	{
+	case RED:
+		ofs << 0;
+		break;
+	case GREEN:
+		ofs << 1;
+		break;
+	case BLUE:
+		ofs << 2;
+		break;
+	case WHITE:
+		ofs << 3;
+		break;
+	}
+	return ofs;
 }

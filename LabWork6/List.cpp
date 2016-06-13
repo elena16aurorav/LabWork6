@@ -1,9 +1,14 @@
 #pragma once
-#include "List.h"
-#include "Node.h"
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <typeinfo>
+
+#include "List.h"
+#include "Node.h"
+#include "myShape.h"
+#include "myRect.h"
+#include "myCircle.h"
 
 List::List(){//используем для создания пустого списка
 	this->Head.pNext = &Tail;
@@ -249,3 +254,72 @@ List & List::operator=(List && other)
 	return *this;
 }
 */
+
+std::ostream& operator<<(std::ostream& os, const List& string)
+{
+	Node* p = string.Head.pNext;
+	while (p != &string.Tail)
+	{
+		if (const Rect* rec = dynamic_cast<const Rect*>(p->m_data))
+		{
+			os << *rec;
+		}
+		if (const Circle* cir = dynamic_cast<const Circle* >(p->m_data))
+		{
+			os << *cir;
+		}
+		p = p->pNext;
+	}
+	return os;
+};
+
+std::ofstream& operator<<(std::ofstream& ofs, const List& list)
+{
+	ofs << "" << list.m_size << std::endl;
+	Node* p = list.Head.pNext;
+	while (p != &list.Tail)
+	{
+		if (const Rect* rec = dynamic_cast<const Rect*>(p->m_data))
+		{
+			ofs << *rec;
+		}
+		if (const Circle* cir = dynamic_cast<const Circle* >(p->m_data))
+		{
+			ofs << *cir;
+		}
+		p = p->pNext;
+	}
+	return ofs;
+};
+
+
+std::ifstream& operator>>(std::ifstream& ifs, List& string)
+{
+	int count;
+	ifs >> count;
+	int obj;
+	for (int i = 0; i < count; i++)
+	{
+		ifs >> obj;
+		if (obj == 1)
+		{
+			int x;
+			int y;
+			double radius;
+			ifs >> x >> y >> radius;
+			Circle cir(x, y, radius, WHITE);
+			string.AddToTail(cir);
+		}
+		else
+		{
+			int bot;
+			int top;
+			int left;
+			int right;
+			ifs >> bot >> top >> left >> right;
+			Rect rec(left, right, top, bot);
+			string.AddToTail(rec);
+		}
+	}
+	return ifs;
+};

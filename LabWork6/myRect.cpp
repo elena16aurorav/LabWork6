@@ -1,6 +1,8 @@
 #include "myRect.h"
 #include "myShape.h"
 #include <iostream>
+#include <fstream>
+
 using namespace std;
 
 Rect::Rect(){
@@ -106,8 +108,49 @@ bool Rect::operator==(const Shape& other)
 	if (const Rect* rec = dynamic_cast<const Rect*>(&other))
 	{
 		if (m_bottom == rec->m_bottom && m_left == rec->m_left && 
-			m_right == rec->m_right && m_top == rec->m_top && m_color == rec->m_color)
+			m_right == rec->m_right && m_top == rec->m_top &&
+			m_color==other.getColor())
 			return true;
 	}
 	return false;
 };
+
+Rect* Rect::operator=(const Shape& other)
+{
+	if (const Rect* rect = dynamic_cast<const Rect*>(&other))
+	{
+		m_color = rect->getColor();
+		m_bottom = rect->m_bottom;
+		m_top = rect->m_top;
+		m_left = rect->m_left;
+		m_right = rect->m_right;
+	}
+	return this;
+};
+
+Rect* Rect::operator=(Shape&& other)
+{
+	if (const Rect* rect = dynamic_cast<const Rect*>(&other))
+	{
+		m_color = rect->getColor();
+		m_bottom = rect->m_bottom;
+		m_top = rect->m_top;
+		m_left = rect->m_left;
+		m_right = rect->m_right;
+	}
+	return this;
+};
+
+std::ostream& operator<<(std::ostream& os, const Rect& string)
+{
+	//os << "Rectangle: " <<"Bottom-" << string.m_bottom << " Top-" << string.m_top << " Left-" << string.m_left << " Right-" << string.m_right << std::endl;
+	os << string.m_bottom << " " << string.m_top << " " << string.m_left << " " << string.m_right << std::endl;
+	return os;
+};
+
+std::ofstream & operator<<(std::ofstream & ofs, const Rect& rec)
+{
+	ofs << "" << 1 << std::endl << rec.m_bottom << " " << rec.m_top << " " << rec.m_left << " " << rec.m_right << std::endl;
+	return ofs;
+};
+
