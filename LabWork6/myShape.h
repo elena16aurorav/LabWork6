@@ -5,8 +5,9 @@ enum COLOR { RED, GREEN, BLUE, WHITE };
 class Shape {
 	protected:
 		COLOR m_color;
+public:
 		double m_square;
-	public:
+	//public:
 		Shape();
 		Shape(COLOR color1);
 		Shape(const Shape& other);
@@ -15,5 +16,7 @@ class Shape {
 
 		virtual void WhereAmI() const=0;
 		virtual void Inflate(int a)= 0;
-		virtual void calculateSquare()=0;
+		virtual void calculateSquare() = 0;
+		virtual Shape* factoryMethod() const = 0;
+		double getSquare() const;
 };

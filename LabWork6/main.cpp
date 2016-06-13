@@ -13,21 +13,34 @@ int main()
 	Circle c6 = Circle(c1);
 	//Circle c7 = c2;
 
-	Rect r1 = Rect(10, 10, 10, 10, RED);
-	Rect r2 = Rect(5, 15, 5, 15, RED);
-	Rect r3 = Rect(10, 100, 10, 100, BLUE);
-	Rect r4 = Rect(50, 50, 50, 50, GREEN);
-	Rect r5 = Rect(10, 35, 10, 35, WHITE);
+	Rect r1 = Rect(10, 20, 20, 40, RED);
+	Rect r2 = Rect(15, 20, 25, 40, RED);
+	Rect r3 = Rect(20, 35, 30, 40, BLUE);
+	Rect r4 = Rect(25, 40, 30, 40, GREEN);
+	Rect r5 = Rect(30, 40, 30, 40, WHITE);
 	Rect r6 = Rect(r1);
 	//Rect r7 = r2;
 
 
 
-	///List list = List();
-	///list.size();//=0, т.к. список пустой
-	/*Circle circle = Circle(15, 10, 10);
-	Circle circle2 = Circle(155, 105, 105);
-	list.AddToHead(circle);
+	List list = List();
+	list.size();//=0, т.к. список пустой
+	
+	list.AddToHead(c1);
+	list.AddToHead(r1);
+	list.AddToHead(c2);
+	list.AddToHead(r2);
+//	/*
+	list.AddToHead(c3);
+	list.AddToHead(r3);
+	list.AddToHead(c4);
+	list.AddToHead(r4);
+	list.AddToHead(c5);
+	list.AddToHead(r5);
+	list.AddToHead(c6);
+	list.AddToHead(r6);
+//	*/
+/*
 	list.size();//=1
 	list.AddToTail(circle);
 	list.size();//=2
@@ -43,11 +56,12 @@ int main()
 	list.size();//=3
 	//list.RemoveOne(circle);
 	//list.Remove(circle);
+*/	
 	list.size();
 
 	list.sort();
 	list.size();
-
+/*
 	//только распечатка списка
 	std::cout << list;
 

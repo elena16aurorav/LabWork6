@@ -96,3 +96,7 @@ void Rect::calculateSquare(){
 	int hight = this->m_bottom - this->m_top;
 	this->m_square = light*hight;
 };
+
+Rect* Rect::factoryMethod() const{
+	return new Rect(*this);
+};

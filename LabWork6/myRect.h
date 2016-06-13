@@ -26,5 +26,7 @@ public:
 	virtual void WhereAmI() const;
 	virtual void Inflate(int a);
 	virtual void calculateSquare();
+	virtual Rect* factoryMethod() const;
+
 };
 

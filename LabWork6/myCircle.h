@@ -19,4 +19,5 @@ class Circle: public Shape {
 		virtual void WhereAmI() const;
 		virtual void Inflate(int a);
 		virtual void calculateSquare();
+		virtual Circle* factoryMethod() const;
 };

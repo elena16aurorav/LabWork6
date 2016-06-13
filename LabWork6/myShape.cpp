@@ -23,3 +23,6 @@ Shape::~Shape() {
 	cout << "Now I am in Shape's destructor!" << endl;
 };
 
+double Shape::getSquare() const {
+	return this->m_square;
+}

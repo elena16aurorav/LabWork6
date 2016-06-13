@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-/*
+
 List::List(){//используем для создания пустого списка
 	this->Head.pNext = &Tail;
 	this->Tail.pPrev = &Head;
@@ -25,7 +25,7 @@ List::List(const List & other)
 		Node* tmp = other.Head.pNext;
 		for (int i = 0; i < other.m_size; i++)
 		{
-			this->AddToTail(tmp->m_data);
+			this->AddToTail(*tmp->m_data);
 			tmp = tmp->pNext;
 		}
 	}
@@ -48,8 +48,6 @@ List::List(List && other)
 		other.m_size = 0;
 	}
 }
-
-
 
 List::~List(){
 	while (Head.pNext != &Tail){
@@ -74,12 +72,13 @@ void List::AddToHead(const Shape& shape){//добавляем элемент
 	new Node(&Head, shape);
 	this->m_size++;
 };
+
 void List::AddToTail(const Shape& shape) {//добавляем элемент
 	//в список сразу до Tail, т.е. после последнего элемента до Tail.
 	new Node(Tail.pPrev, shape);
 	this->m_size++;
 };
-
+/*
 bool List::RemoveOne(const Shape& shape){
 	Node* pNode = Head.pNext;
 	while (pNode != &Tail){
@@ -89,6 +88,7 @@ bool List::RemoveOne(const Shape& shape){
 			return true;
 		}
 */
+/*
 		pNode = pNode->pNext;//переход на следующий элемент в списке
 	}
 	return false;
@@ -106,7 +106,7 @@ int List::Remove(const Shape& shape) {
 			this->m_size--;
 			n++;
 		}
-*/
+*//*
 		pNode = pNodeNext;
 	}
 //	delete pNodeNext;
@@ -121,7 +121,7 @@ void List::Empty() {
 	Tail.pPrev = &Head;
 	this->m_size = 0;
 };
-
+*/
 void List::sort() {//пузырьковая сортировка
 	Node* p = Head.pNext;
 	int j = m_size;
@@ -130,9 +130,24 @@ void List::sort() {//пузырьковая сортировка
 		Node* np = p;
 		for (int i = 0; i <j - 1; i++)
 		{
-			if (np->m_data.calculateSquare() > np->pNext->m_data.calculateSquare())
+			if (np->m_data->getSquare() > np->pNext->m_data->getSquare())
 			{
-				Node* p1 = np->pNext;
+				Node* p1 = np;
+				Node* p2 = np->pNext;
+
+				p1->pPrev->pNext = p2;//1
+				p2->pNext->pPrev = p1;//2
+
+				p2->pPrev = p1->pPrev;//3
+				p1->pNext = p2->pNext;//4
+
+				p2->pNext = p1;
+				p1->pPrev = p2;
+
+				np = p2;
+				//p = np;
+				
+/*				Node* p1 = np->pNext;
 				Node* p2 = np->pPrev;
 				
 				p2->pNext = p1;
@@ -144,7 +159,7 @@ void List::sort() {//пузырьковая сортировка
 				p1->pNext = np;
 				
 				np->pPrev = p1;
-					
+*/					
 			}
 			np = np->pNext;
 		}
@@ -153,7 +168,7 @@ void List::sort() {//пузырьковая сортировка
 	}
 
 };
-
+/*
 std::ostream& operator<<(std::ostream & os, const List& ls)
 //классы ostream и ofstream связаны наследованием (с.156)
 {

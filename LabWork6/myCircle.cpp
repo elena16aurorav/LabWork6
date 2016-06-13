@@ -37,3 +37,7 @@ void Circle::Inflate(int a){
 void Circle::calculateSquare(){
 	this->m_square=2*3.14*this->m_radius*this->m_radius;
 };
+
+Circle* Circle::factoryMethod() const{
+	return new Circle(*this);
+};
